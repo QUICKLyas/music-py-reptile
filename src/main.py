@@ -1,7 +1,10 @@
-import GetPlayList.DisposePlayList as dp
-import GetPlayList.GetPlayList as gp
+import controller.FuncGetJson as fgJ
+import domain.PlayList as pl
 
-gp = gp.GetPlayList()
-dp = dp.DisposePlayList()
-context = gp.getPlayList()
-dp.writePltoJson(context)
+# 新建对象
+pp = pl.PlayList()
+# 新建方法对象
+f = fgJ.GetJson()
+# 获取内容
+context = f.getJsonFromUrl(pp, "playlist")
+f.writeJson(context, file_name="pl")

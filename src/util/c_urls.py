@@ -8,6 +8,7 @@ urls = {
         "head": "https://yesplaymusic.yunyuwu.cn/api/song/detail?ids=",
         "ids": ""
     },
+    # 每首歌曲中每段歌词出现的时间，用在滚动歌词界面
     "lyric": {
         "head": "https://yesplaymusic.yunyuwu.cn/api/lyric?id=",
         "id": ""
@@ -15,6 +16,10 @@ urls = {
     "personal_fm": {
         "head": "https://yesplaymusic.yunyuwu.cn/api/personal_fm?timestamp=",
         "timestamp": ""
+    },
+    "artist": {
+        "head": "https://yesplaymusic.yunyuwu.cn/api/simi/artist?id=",
+        "id": ""
     }
 }
 # 歌单 -- 歌曲 -- 歌手
