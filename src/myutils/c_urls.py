@@ -13,6 +13,10 @@ urls = {
         "head": "https://yesplaymusic.yunyuwu.cn/api/song/detail?ids=",
         "ids": ""
     },
+    "song_listen_able": {
+        "head": "https://yesplaymusic.yunyuwu.cn/api/song/url?id=",
+        "id": ""
+    },
     # 每首歌曲中每段歌词出现的时间，用在滚动歌词界面
     "lyric": {
         "head": "https://yesplaymusic.yunyuwu.cn/api/lyric?id=",

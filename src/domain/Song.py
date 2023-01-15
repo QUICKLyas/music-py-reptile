@@ -34,3 +34,8 @@ class Song(object):
 
     def setHead(self, head):
         self.iheadd = head
+
+
+class SongAble(object):
+    def __init__(self) -> None:
+        pass

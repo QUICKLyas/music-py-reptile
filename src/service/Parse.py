@@ -55,3 +55,8 @@ class Parse(object):
             sList.append(context)
             break
         return sList
+
+    # 判断每首是否能够获取播放权限，排除无法播放的歌曲
+    def cleanSong(self, id):
+        
+        return
