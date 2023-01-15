@@ -11,6 +11,7 @@ class Parse(object):
         self.pl = pl.PlayListDetail()
         self.f = fgJ.GetJson()
         self.s = s.Song()
+        self.sa = s.SongAble()
         pass
 
     # 该段程序输出的是一个list
@@ -52,11 +53,23 @@ class Parse(object):
             self.s.setId(s['id'])
             context = self.f.getJsonFromUrl(self.s, "song detail")
             # 构建一个歌曲列表
+            # 如果 是 版本歌曲 跳过 如果不是版本歌曲，不跳过
+            if (self.cleanSong(self.s.getId())):
+                continue
             sList.append(context)
             break
+        # print(sList)
         return sList
 
     # 判断每首是否能够获取播放权限，排除无法播放的歌曲
+    # 如果无权收听，返回True 表示 是 版权歌曲
+    # 如果可以收听，返回False 表示 不需要 版本
     def cleanSong(self, id):
-        
+        self.sa.setId(id)
+        context = self.f.getJsonFromUrl(self.sa, "could this song be listened")
+        # 判断是否为None ，如果是 返回 False 不是 返回 True
+        if(context['data'][0]['freeTrialPrivilege']['cannotListenReason'] == None):
+            return False
+        else:
+            return True
         return
