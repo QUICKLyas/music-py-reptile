@@ -12,4 +12,5 @@ p = parse.Parse()
 # 获取内容
 # context = f.getJsonFromUrl(pp, "playlist")
 # f.writeJson(context, file_name="pl")
-p.readPlayList()
+# plist = p.readPlayList()
+# p.songIds(plist[0]['songs'])
