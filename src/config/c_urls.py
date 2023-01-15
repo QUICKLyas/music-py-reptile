@@ -3,6 +3,18 @@ urls = {
         "head": "https://yesplaymusic.yunyuwu.cn/api/top/playlist?cat=%E5%85%A8%E9%83%A8&offset=",
         "offset": 96,  # start num
         "limit": "&limit=48"
+    },
+    "song_detail": {
+        "head": "https://yesplaymusic.yunyuwu.cn/api/song/detail?ids=",
+        "ids": ""
+    },
+    "lyric": {
+        "head": "https://yesplaymusic.yunyuwu.cn/api/lyric?id=",
+        "id": ""
+    },
+    "personal_fm": {
+        "head": "https://yesplaymusic.yunyuwu.cn/api/personal_fm?timestamp=",
+        "timestamp": ""
     }
 }
 # 歌单 -- 歌曲 -- 歌手
