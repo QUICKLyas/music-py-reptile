@@ -3,9 +3,9 @@ from urllib import request
 
 from fake_useragent import UserAgent as ua
 
-import config.c_ua as cua
-import config.c_urls as curls
-import config.t_file as tf
+import myutils.c_ua as cua
+import myutils.c_urls as curls
+import myutils.t_file as tf
 import pro_parse as pparse
 
 

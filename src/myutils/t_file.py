@@ -25,5 +25,5 @@ def writeJson(t, path="./data/", file_name="tmp"):
 def readJson(path="./data/", file_name="tmp"):
     with open(path + file_name+".json", "r") as f:
         context = json.loads(f.read())
-        print("Read "+file_name+"'s context type is " + type(context))
+        print("Read "+file_name+"'s context type is " + str(type(context)))
         return context

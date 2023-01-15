@@ -2,8 +2,8 @@ import json
 import time as t
 from urllib import request
 
-import config.c_code as cc
-import config.t_file as tf
+import myutils.c_code as cc
+import myutils.t_file as tf
 
 
 class GetJson(object):

@@ -1,5 +1,5 @@
-import config.c_ua as cua
-import config.c_urls as curls
+import myutils.c_ua as cua
+import myutils.c_urls as curls
 
 
 class Singer(object):

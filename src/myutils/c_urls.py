@@ -4,6 +4,11 @@ urls = {
         "offset": 96,  # start num
         "limit": "&limit=48"
     },
+    "playlist_detail": {
+        "head": "https://yesplaymusic.yunyuwu.cn/api/playlist/detail?id=",
+        "id": "",
+        "timestamp": "&timestamp="
+    },
     "song_detail": {
         "head": "https://yesplaymusic.yunyuwu.cn/api/song/detail?ids=",
         "ids": ""

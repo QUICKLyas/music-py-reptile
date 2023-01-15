@@ -1,7 +1,5 @@
 {
     "python.analysis.extraPaths": [
-        "./src",
-        "./src",
         "./src"
     ],
     "isort.trace": "off"
