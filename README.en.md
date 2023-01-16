@@ -8,8 +8,8 @@ Software architecture description
 
 #### Installation
 
-1.  实验安装吗，mongoDB，并在服务器上完成搭建
-2.  xxxx
+1.  实验安装，mongoDB，并在服务器上完成搭建
+2.  使用可视化工具mongoDBCompass连接远程数据库
 3.  xxxx
 
 #### Instructions
