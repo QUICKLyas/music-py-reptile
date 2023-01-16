@@ -98,7 +98,7 @@ systemctl daemon-reload
 1. mongo
 数据库内
 2. use admin
-db.createUser({user:"root",pwd:"345789@Quickly",roles:[{role:"userAdminAnyDatabase",db:"admin"}]})
+db.createUser({user:"root",pwd:"",roles:[{role:"userAdminAnyDatabase",db:"admin"}]})
 Successfully added user: {
         "user" : "root",
         "roles" : [
@@ -114,8 +114,24 @@ switched to db admin
 > show tables
 Warning: unable to run listCollections, attempting to approximate collection names by parsing connectionStatus
 # 登录
-> db.auth("root","345789@Quickly")
+> db.auth("root","")
 1
 > show tables
 system.users
 system.version
+
+创建本爬虫程序所使用的用户和数据库
+db.createUser({user:'PJMVSSM',pwd:'',roles:[{role:'readWrite',db:'nobody'}]})
+
+> use nobody
+switched to db nobody
+> db.createUser({user:'PJMVSSM',pwd:'',roles:[{role:'readWrite',db:'nobody'}]})
+Successfully added user: {
+        "user" : "PJMVSSM",
+        "roles" : [
+                {
+                        "role" : "readWrite",
+                        "db" : "nobody"
+                }
+        ]
+}
