@@ -254,3 +254,9 @@ journal = true
 storageEngine = wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks
 Shell 
 mongo --sslAllowInvalidCertificates --sslAllowInvalidHostnames --ssl --sslPEMKeyFile /usr/local/mongo/ssl/client.pem --sslCAFile /usr/local/mongo/ssl/ca.pem --host 127.0.0.1
+# 确认需要使用反代
+## 尝试使用反代完成
+安装ss5 需要的配置
+yum install gcc openldap-devel pam-devel openssl-devel
+使用以下命令获取ss5
+wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
