@@ -145,7 +145,7 @@ TLS/SSL is disabled. If possible, enable TLS/SSL to avoid security vulnerabiliti
 openssl req -out ca.pem -new -x509 -days 3650
 ### 带参数
 openssl req -out ca.pem -new -x509 -days 3650 -subj "/C=CN/ST=BeiJing/O=bigdata/CN=server1/CN=yellowcong/emailAddress=yellowcong@qq.com"
-结果
+### 部分结果
 [wymusic@ ssl]$ ls
 ca.pem  privkey.pem
 ## 第二部： 生成服务端证书
@@ -158,13 +158,22 @@ openssl genrsa -out server.key 2048
 openssl req -key server.key -new -out server.req 
 /** -subj "/C=CN/ST=JS/O=bigdata/CN=server1/CN=localhost/emailAddress=2298930148@qq.com"
  */
-## 生成服务器端证书
+### 生成服务器端证书
 openssl x509 -req -in server.req -CA ca.pem -CAkey privkey.pem -CAcreateserial -out server.crt -days 3650
 
-## 合并服务器端私钥和服务器端证书，生成server.pem
+### 合并服务器端私钥和服务器端证书，生成server.pem
 cat server.key server.crt > server.pem
 
-## 校验服务器端pem文件
+### 校验服务器端pem文件
 openssl verify -CAfile ca.pem server.pem
+### 部分结果
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ openssl x509 -req -in server.req -CA ca.pem -CAkey privkey.pem -CAcreateserial -out server.crt -days 3650
+Signature ok
+subject=C = CN, ST = JS, O = bigdata, CN = server_mongodb, CN = localhost, emailAddress = 2298930148@qq.com
+Getting CA Private Key
+Enter pass phrase for privkey.pem:
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ cat server.key server.crt > server.pem
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ openssl verify -CAfile ca.pem server.pem
+server.pem: OK
 
 # 生成密钥 
