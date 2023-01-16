@@ -8,7 +8,7 @@ Software architecture description
 
 #### Installation
 
-1.  xxxx
+1.  实验安装吗，mongoDB，并在服务器上完成搭建
 2.  xxxx
 3.  xxxx
 
