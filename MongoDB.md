@@ -139,6 +139,7 @@ Successfully added user: {
 #### 报错：
 TLS/SSL is disabled. If possible, enable TLS/SSL to avoid security vulnerabilities.
 发现无法正常连接，需要ssl
+### 结果未成功
 # 首先生成证书
 ## 第一步：生成根证书
 ### 生成根证书
@@ -176,4 +177,91 @@ Enter pass phrase for privkey.pem:
 [wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ openssl verify -CAfile ca.pem server.pem
 server.pem: OK
 
-# 生成密钥 
+## 第三部分：生成客户端证书
+### 生成客户端私钥
+openssl genrsa -out client.key 2048
+### 生成客户端申请文件
+#CN=localhost 是mongo服务的域名地址，这个需要根据自己业务进行修改处理
+openssl req -key client.key -new -out client.req -subj "/C=CN/ST=JS/O=bigdata/CN=server1/CN=localhost/emailAddress=2298930148@qq.com"
+### 生成客户端证书
+openssl x509 -req -in client.req -CA ca.pem -CAkey privkey.pem -CAserial ca.srl  -out client.crt -days 3650
+
+### 合并客户端私钥和客户端证书，生成client.pem
+cat client.key client.crt > client.pem
+
+### 校验客户端pem文件
+openssl verify -CAfile ca.pem client.pem
+### 结果部分
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ openssl genrsa -out client.key 2048
+Generating RSA private key, 2048 bit long modulus (2 primes)
+...............+++++
+........+++++
+e is 65537 (0x010001)
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ ls
+ca.pem  client.key   server.crt  server.pem
+ca.srl  privkey.pem  server.key  server.req
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ openssl req -key client.key -new -out client.req -subj "/C=CN/ST=JS/O=bigdata/CN=server1/CN=localhost/emailAddress=2298930148@qq.com"
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ ls
+ca.pem  client.key  privkey.pem  server.key  server.req
+ca.srl  client.req  server.crt   server.pem
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ openssl x509 -req -in client.req -CA ca.pem -CAkey privkey.pem -CAserial ca.srl  -out client.crt -days 3650
+Signature ok
+subject=C = CN, ST = JS, O = bigdata, CN = server1, CN = localhost, emailAddress = 2298930148@qq.com
+Getting CA Private Key
+Enter pass phrase for privkey.pem:
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ cat client.key client.crt > client.pem
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ openssl verify -CAfile ca.pem client.pem
+client.pem: OK
+[wymusic@iZuf6g411frzx7ezcnnv92Z ssl]$ ls -al
+total 40
+drwxrwxr-x 2 wymusic wymusic  197 Jan 16 22:20 .
+drwx------ 4 wymusic wymusic  160 Jan 16 21:15 ..
+-rw-rw-r-- 1 wymusic wymusic 1371 Jan 16 21:03 ca.pem
+-rw-rw-r-- 1 wymusic wymusic   41 Jan 16 22:20 ca.srl
+-rw-rw-r-- 1 wymusic wymusic 1249 Jan 16 22:20 client.crt
+-rw------- 1 wymusic wymusic 1679 Jan 16 22:19 client.key
+-rw-rw-r-- 1 wymusic wymusic 2928 Jan 16 22:20 client.pem
+-rw-rw-r-- 1 wymusic wymusic 1021 Jan 16 22:20 client.req
+-rw------- 1 wymusic wymusic 1854 Jan 16 21:02 privkey.pem
+-rw-rw-r-- 1 wymusic wymusic 1261 Jan 16 22:15 server.crt
+-rw------- 1 wymusic wymusic 1675 Jan 16 21:06 server.key
+-rw-rw-r-- 1 wymusic wymusic    0 Jan 16 22:16 server.pem
+-rw-rw-r-- 1 wymusic wymusic 1029 Jan 16 21:30 server.req
+
+# 配置服务端
+## 检查配置文件 mongodb.conf
+1. cat <<EOF > /home/wymusic/mongodb/mongodb/mongodb.conf
+2. 直接配置文件
+#数据库数据存放目录
+dbpath = /home/wymusic/mongodb/mongodb/data/db
+#日志文件存放目录
+logpath = /home/wymusic/mongodb/mongodb/data/log/mongodb.conf
+#日志追加方式
+logappend = true
+#端口
+port = 27017
+#是否认证
+auth = true
+#以守护进程的方式在后台运行
+fork = true
+#远程连接指定ip，否则无法连接，一般不做限制
+bind_ip = 0.0.0.0
+#最大同时连接数
+maxConns = 5
+#每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。
+journal = true
+#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。
+storageEngine = wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks
+Shell 
+mongo --sslAllowInvalidCertificates --sslAllowInvalidHostnames --ssl --sslPEMKeyFile /usr/local/mongo/ssl/client.pem --sslCAFile /usr/local/mongo/ssl/ca.pem --host 127.0.0.1
+# 确认需要使用反代
+## 尝试使用反代完成
+安装ss5 需要的配置
+yum install gcc openldap-devel pam-devel openssl-devel
+使用以下命令获取ss5
+wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+解压文件
+tar zxvf ./ss5-3.8.9-8.tar.gz
+# 以上所有解决方法都不正确，问题重点是服务器控制台没有设置端口同行，需要通过服务器控制台设置可放行的端口
+连接语句
+mongodb://PJMVSSM:******@IP:PORT/?authSource=nobody&readPreference=primary&directConnection=true&ssl=false
