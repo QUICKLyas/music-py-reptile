@@ -140,20 +140,23 @@ Successfully added user: {
 TLS/SSL is disabled. If possible, enable TLS/SSL to avoid security vulnerabilities.
 发现无法正常连接，需要ssl
 # 首先生成证书
-## 生成根证书
+## 第一步：生成根证书
+### 生成根证书
 openssl req -out ca.pem -new -x509 -days 3650
-## 带参数
+### 带参数
 openssl req -out ca.pem -new -x509 -days 3650 -subj "/C=CN/ST=BeiJing/O=bigdata/CN=server1/CN=yellowcong/emailAddress=yellowcong@qq.com"
 结果
 [wymusic@ ssl]$ ls
 ca.pem  privkey.pem
-# 生成服务端证书
-##  生成服务器端私钥
+## 第二部： 生成服务端证书
+###  生成服务器端私钥
 openssl genrsa -out server.key 2048
-## 生成服务器端申请文件 cat server.req
+### 生成服务器端申请文件 cat server.req
+/**
 #CN=localhost 是mongo机器运行的节点域名信息，如果对不上就会报错
+ */
 openssl req -key server.key -new -out server.req 
-/** -subj "/C=CN/ST=JS/O=bigdata/CN=server1/CN=localhost/emailAddress=yellowcong@qq.com"
+/** -subj "/C=CN/ST=JS/O=bigdata/CN=server1/CN=localhost/emailAddress=2298930148@qq.com"
  */
 ## 生成服务器端证书
 openssl x509 -req -in server.req -CA ca.pem -CAkey privkey.pem -CAcreateserial -out server.crt -days 3650
