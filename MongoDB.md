@@ -260,3 +260,8 @@ mongo --sslAllowInvalidCertificates --sslAllowInvalidHostnames --ssl --sslPEMKey
 yum install gcc openldap-devel pam-devel openssl-devel
 使用以下命令获取ss5
 wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+解压文件
+tar zxvf ./ss5-3.8.9-8.tar.gz
+# 以上所有解决方法都不正确，问题重点是服务器控制台没有设置端口同行，需要通过服务器控制台设置可放行的端口
+连接语句
+mongodb://PJMVSSM:******@IP:PORT/?authSource=nobody&readPreference=primary&directConnection=true&ssl=false
