@@ -1,8 +1,9 @@
 urls = {
     "playlist": {
+        # https://yesplaymusic.yunyuwu.cn/api/top/playlist?cat=%E5%85%A8%E9%83%A8&offset=50
         "head": "https://yesplaymusic.yunyuwu.cn/api/top/playlist?cat=%E5%85%A8%E9%83%A8&offset=",
-        "offset": 96,  # start num
-        "limit": "&limit=48"
+        "offset": 0,  # start num
+        "limit": 50,
     },
     "playlist_detail": {
         "head": "https://yesplaymusic.yunyuwu.cn/api/playlist/detail?id=",

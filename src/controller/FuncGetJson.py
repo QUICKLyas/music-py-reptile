@@ -14,7 +14,7 @@ class GetJson(object):
 
     def getJsonFromUrl(self, ob, name):
         print("[" + t.asctime(t.localtime()) + "]" +
-              "Start get " + name + "\n")
+              "Start get " + name)
         req = request.Request(
             url=ob.url,
             headers=ob.head

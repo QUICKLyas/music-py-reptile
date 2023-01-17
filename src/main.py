@@ -1,3 +1,5 @@
+import time as t
+
 import controller.FuncGetJson as fgJ
 import domain.PlayList as pl
 import mongo.FuncColle as funccol
@@ -11,10 +13,22 @@ import service.Parse as parse
 pp = pl.PlayList()
 # 新建方法对象
 f = fgJ.GetJson()
+fc = funccol.Colle()
 p = parse.Parse()
-# 获取内容
-context = f.getJsonFromUrl(pp, "playlist")
-f.writeJsonToDataBase(context=context['playlists'], col_name="playlist")
+# 该过程保证playlist 的 输入
+for n in range(50):
+    # 获取内容
+    # print(pp.getUrl())
+    # print(n, pp.getOffset(), pp.getL())
+    pp.setOffset(pp.getOffset() + pp.getL())
+    context = f.getJsonFromUrl(pp, "playlist")
+    f.writeJsonToDataBase(
+        context=context['playlists'], col_name="playlist")
+    fc.findDocument("playlist")
+    t.sleep(8)
+# context = f.getJsonFromUrl(pp, "playlist")
+# f.writeJsonToDataBase(context=context['playlists'], col_name="playlist")
+# fc.findDocument("playlist")
 # f.writeJson(context, file_name="pl")
 # plist = p.readPlayList()
 # p.songIds(plist[0]['songs'])
