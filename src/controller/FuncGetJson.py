@@ -1,4 +1,5 @@
 import json
+import ssl as s
 import time as t
 from urllib import request
 
@@ -13,13 +14,15 @@ class GetJson(object):
         pass
 
     def getJsonFromUrl(self, ob, name):
-        print("[" + t.asctime(t.localtime()) + "]" +
-              "Start get " + name)
+        # print("[" + t.asctime(t.localtime()) + "]" +
+        #   "Start get " + name)
         req = request.Request(
             url=ob.url,
             headers=ob.head
         )
-        res = request.urlopen(req)
+        print(ob.url)
+        ssl = s._create_unverified_context()
+        res = request.urlopen(req, context=ssl)
         context = res.read().decode(cc.code['utf-8'])
         context = json.loads(context)
         return context

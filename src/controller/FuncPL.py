@@ -2,6 +2,7 @@ import time as t
 
 import controller.FuncGetJson as fgJ
 import domain.PlayList as pl
+import domain.Song as s
 import mongo.FuncColle as funccol
 import service.Parse as parse
 
@@ -10,6 +11,8 @@ class PL(object):
     def __init__(self) -> None:
         self.pl = pl.PlayList()
         self.pld = pl.PlayListDetail()
+        self.s = s.Song()
+        self.sa = s.SongAble()
         self.f = fgJ.GetJson()
         self.fc = funccol.Colle()
         self.p = parse.Parse()
@@ -28,21 +31,69 @@ class PL(object):
             t.sleep(8)
         return "playlists"
 
+    # 写 playlistdetail
     def writePLDtoMongo(self):
         # 按量获取playlist 的 id
         # 限制为每50一组 通过self.pl.getL()获取
         # 第一步 获取数据
         n = 0
-        print("2")
         while (True):
             docs = self.fc.findDocument(
                 collection_name="playlists",
                 limit=self.pl.getL(),
                 page=n)
             n += 1
-            print(docs)
+            print(len(list(docs)))
             if len(list(docs)) == 0:
                 break
+            # 将每个playlistdetail存放到playlistdetail
             for i in docs:
-                print(i['id'])
+                # 根据id 获取playlistdetail数据
+                self.pld.setId(i['id'])
+                # print(self.pld.getUrl())
+                context = []
+                context.append(self.f.getJsonFromUrl(
+                    self.pld, "playlistsdetail")['playlist'])
+                self.f.writeJsonToDataBase(
+                    context=context, col_name="playlistdetail")
+                # self.fc.findDocument("playlistdetail")
+                t.sleep(3)
         return "playlist detail"
+
+    # 写 song
+    def writeSongtoMongo(self):
+        # 首先获取trackIds
+        n = 0
+        while (True):
+            docs = self.fc.findDocument(
+                collection_name="playlists",
+                limit=self.pl.getL(),
+                page=n)
+            n += 1
+            songIds = list(docs['trackIds'])
+            # print(songId)
+            print(len(list(docs)))
+            if len(list(docs)) == 0:
+                break
+            for i in songIds:
+                # 根据id 获取song和songAble数据
+                # 设置一首哥的数据
+                self.s.setId(i['id'])
+                self.sa.setId(i['id'])
+                context = []
+                contextS = self.f.getJsonFromUrl(
+                    self.s, "song")
+                contextSA = self.f.getJsonFromUrl(
+                    self.sa, "songable"
+                )
+                diction = {
+                    "id": contextS['id'],
+                    "song": contextS,
+                    "song_able": contextSA
+                }
+                context.append(dict)
+                self.f.writeJsonToDataBase(
+                    context=context, col_name="playlistdetail")
+                # self.fc.findDocument("playlistdetail")
+                t.sleep(3)
+        return "song"

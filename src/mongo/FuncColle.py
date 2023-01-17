@@ -12,7 +12,7 @@ class Colle (object):
     def createCollection(self, collection_name):
         # 判断是否存在collection，若不存在创建，若存在需要连接
         if self.isCollectionExist(collection_name):
-            print(collection_name + "exists!")
+            print(collection_name + " exists!")
         cols = self.condb[collection_name]
         cols.insert_one({"name": "playlist"})
         cols.delete_one({"name": "playlist"})
@@ -34,11 +34,10 @@ class Colle (object):
 
     # 查找数据，设定一些限制保证数据的可用性
     def findDocument(self, collection_name, query={}, projection={}, limit=1, page=0):
-        print(collection_name, limit, page)
+        # print(limit, page)
         cols = self.condb[collection_name]
-        print(cols)
         docs = cols.find(query, projection).limit(limit).skip(page*limit)
-        return docs
+        return list(docs)
 
     # 删除数据
     def deleteDocument(self, collection_name, query, projection):
