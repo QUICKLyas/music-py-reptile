@@ -90,7 +90,7 @@ class PL(object):
                     "song": contextS,
                     "song_able": contextSA
                 }
-                context.append(dict)
+                context.append(diction)
 
                 # self.fc.findDocument("playlistdetail")
                 t.sleep(3)
