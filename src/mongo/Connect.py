@@ -5,17 +5,18 @@ import myutils.c_user as cu
 
 class Conn (object):
     def __init__(self) -> None:
+        # 创建数据库连接
         self.client = MongoClient(
-            cu.user['IP'], int(cu.user['port']))  # Host以及port
-        print(self.client)
+            "mongodb://"
+            + cu.user['mongoDB']['username'] + ":"
+            + cu.user['mongoDB']['password'] + "@"
+            + cu.user['IP'] + ":"
+            + cu.user['port'] + "/"
+            + cu.user['database']
+            + "?authMechanism=DEFAULT&tls=false&authSource=nobody"
+        )  # Host以及port
+        # 选择数据库
         self.db = self.client['nobody']
-        print(self.db)
-        self.client.authenticate(
-            cu.user['mongoDB']['username'],
-            cu.user['mongoDB']['password'])
-        collection = self.db.test   # myset集合，同上解释
-        collection.insert({"name": "zhangsan", "age": 18})
-        collection.delete_one({"name": "zhangsan"})
 
     def getClient(self):
         return self.client
