@@ -1,191 +1,39 @@
-{
-    "songs": [
-        {
-            "name": "RRRepeat!!!",
-            "id": 481523276,
-            "pst": 0,
-            "t": 0,
-            "ar": [
-                {
-                    "id": 19957,
-                    "name": "GYARI",
-                    "tns": [],
-                    "alias": []
-                },
-                {
-                    "id": 159692,
-                    "name": "初音ミク",
-                    "tns": [],
-                    "alias": []
-                },
-                {
-                    "id": 160154,
-                    "name": "鏡音リン",
-                    "tns": [],
-                    "alias": []
-                },
-                {
-                    "id": 190527,
-                    "name": "鏡音レン",
-                    "tns": [],
-                    "alias": []
-                },
-                {
-                    "id": 190523,
-                    "name": "巡音ルカ",
-                    "tns": [],
-                    "alias": []
-                },
-                {
-                    "id": 12323194,
-                    "name": "猫村いろは",
-                    "tns": [],
-                    "alias": []
-                },
-                {
-                    "id": 12095248,
-                    "name": "KAITO",
-                    "tns": [],
-                    "alias": []
-                },
-                {
-                    "id": 976003,
-                    "name": "結月ゆかり",
-                    "tns": [],
-                    "alias": []
-                }
-            ],
-            "alia": [
-                "那些VOCALOID们只是重复着二拍子并叫喊着Tetteyterettey"
-            ],
-            "pop": 25,
-            "st": 0,
-            "rt": null,
-            "fee": 0,
-            "v": 13,
-            "crbt": null,
-            "cf": "",
-            "al": {
-                "id": 35555250,
-                "name": "RRRepeat!!!",
-                "picUrl": "https://p2.music.126.net/NjHgJ2RxIT9lipEA4FNedg==/19184278881596600.jpg",
-                "tns": [],
-                "pic_str": "19184278881596600",
-                "pic": 19184278881596600
-            },
-            "dt": 4026201,
-            "h": {
-                "br": 320000,
-                "fid": 0,
-                "size": 161049121,
-                "vd": -11200,
-                "sr": 44100
-            },
-            "m": {
-                "br": 192000,
-                "fid": 0,
-                "size": 96629490,
-                "vd": -8600,
-                "sr": 44100
-            },
-            "l": {
-                "br": 128000,
-                "fid": 0,
-                "size": 64419675,
-                "vd": -7100,
-                "sr": 44100
-            },
-            "sq": null,
-            "hr": null,
-            "a": null,
-            "cd": "1",
-            "no": 1,
-            "rtUrl": null,
-            "ftype": 0,
-            "rtUrls": [],
-            "djId": 0,
-            "copyright": 0,
-            "s_id": 0,
-            "mark": 262144,
-            "originCoverType": 0,
-            "originSongSimpleData": null,
-            "tagPicList": null,
-            "resourceState": true,
-            "version": 13,
-            "songJumpInfo": null,
-            "entertainmentTags": null,
-            "awardTags": null,
-            "single": 0,
-            "noCopyrightRcmd": null,
-            "rtype": 0,
-            "rurl": null,
-            "mst": 9,
-            "cp": 663018,
-            "mv": 5558214,
-            "publishTime": 1493395200000,
-            "tns": [
-                "那些VOCALOID们只是重复着两个和弦并叫喊着Tetteyterettey"
-            ]
-        }
-    ],
-    "privileges": [
-        {
-            "id": 481523276,
-            "fee": 0,
-            "payed": 0,
-            "st": 0,
-            "pl": 320000,
-            "dl": 320000,
-            "sp": 7,
-            "cp": 1,
-            "subp": 1,
-            "cs": false,
-            "maxbr": 320000,
-            "fl": 320000,
-            "toast": false,
-            "flag": 256,
-            "preSell": false,
-            "playMaxbr": 320000,
-            "downloadMaxbr": 320000,
-            "maxBrLevel": "exhigh",
-            "playMaxBrLevel": "exhigh",
-            "downloadMaxBrLevel": "exhigh",
-            "plLevel": "exhigh",
-            "dlLevel": "exhigh",
-            "flLevel": "exhigh",
-            "rscl": null,
-            "freeTrialPrivilege": {
-                "resConsumable": false,
-                "userConsumable": false,
-                "listenType": null
-            },
-            "chargeInfoList": [
-                {
-                    "rate": 128000,
-                    "chargeUrl": null,
-                    "chargeMessage": null,
-                    "chargeType": 0
-                },
-                {
-                    "rate": 192000,
-                    "chargeUrl": null,
-                    "chargeMessage": null,
-                    "chargeType": 0
-                },
-                {
-                    "rate": 320000,
-                    "chargeUrl": null,
-                    "chargeMessage": null,
-                    "chargeType": 0
-                },
-                {
-                    "rate": 999000,
-                    "chargeUrl": null,
-                    "chargeMessage": null,
-                    "chargeType": 1
-                }
-            ]
-        }
-    ],
-    "code": 200
-}
+[
+    {
+        "id": 1384026889,
+        "url": "http://m801.music.126.net/20230117205546/5ad6dac9b948cba37e03139189724f3c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/14096490823/6fa1/3bae/84a1/b7a7a216673ac51b13eae8fe0acc6fa4.mp3",
+        "br": 128000,
+        "size": 3529773,
+        "md5": "b7a7a216673ac51b13eae8fe0acc6fa4",
+        "code": 200,
+        "expi": 1200,
+        "type": "mp3",
+        "gain": -4.2811,
+        "peak": 0.9141,
+        "fee": 8,
+        "uf": null,
+        "payed": 0,
+        "flag": 4096,
+        "canExtend": false,
+        "freeTrialInfo": null,
+        "level": "standard",
+        "encodeType": "mp3",
+        "freeTrialPrivilege": {
+            "resConsumable": false,
+            "userConsumable": false,
+            "listenType": null,
+            "cannotListenReason": null
+        },
+        "freeTimeTrialPrivilege": {
+            "resConsumable": false,
+            "userConsumable": false,
+            "type": 0,
+            "remainTime": 0
+        },
+        "urlSource": 0,
+        "rightSource": 0,
+        "podcastCtrp": null,
+        "effectTypes": null,
+        "time": 220546
+    }
+]

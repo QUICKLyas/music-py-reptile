@@ -73,27 +73,27 @@ class PL(object):
             songIds = list(docs['trackIds'])
             # print(songId)
             print(len(list(docs)))
+            context = []
             if len(list(docs)) == 0:
                 break
             for i in songIds:
                 # 根据id 获取song和songAble数据
                 # 设置一首哥的数据
                 self.s.setId(i['id'])
-                self.sa.setId(i['id'])
-                context = []
                 contextS = self.f.getJsonFromUrl(
-                    self.s, "song")
+                    self.s, "song")[0]
                 contextSA = self.f.getJsonFromUrl(
                     self.sa, "songable"
-                )
+                )['data'][0]
                 diction = {
                     "id": contextS['id'],
                     "song": contextS,
                     "song_able": contextSA
                 }
                 context.append(dict)
-                self.f.writeJsonToDataBase(
-                    context=context, col_name="playlistdetail")
+
                 # self.fc.findDocument("playlistdetail")
                 t.sleep(3)
+            self.f.writeJsonToDataBase(
+                context=context, col_name="song")
         return "song"
