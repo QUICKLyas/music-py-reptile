@@ -66,13 +66,17 @@ class PL(object):
         n = 0
         while (True):
             docs = self.fc.findDocument(
-                collection_name="playlists",
+                collection_name="playlistdetail",
                 limit=self.pl.getL(),
                 page=n)
             n += 1
-            songIds = list(docs['trackIds'])
-            # print(songId)
-            print(len(list(docs)))
+            songIds = []
+            for i in docs:
+                # print(type(i), i['trackIds'])
+                songIds.extend(i['trackIds'])
+            # songIds = list(docs['trackIds'])
+            print(len(songIds))
+            # print(len(list(docs)))
             context = []
             if len(list(docs)) == 0:
                 break
@@ -80,18 +84,18 @@ class PL(object):
                 # 根据id 获取song和songAble数据
                 # 设置一首哥的数据
                 self.s.setId(i['id'])
+                self.sa.setId(i['id'])
                 contextS = self.f.getJsonFromUrl(
-                    self.s, "song")[0]
+                    self.s, "song")['songs'][0]
                 contextSA = self.f.getJsonFromUrl(
                     self.sa, "songable"
                 )['data'][0]
                 diction = {
-                    "id": contextS['id'],
+                    "id": i['id'],
                     "song": contextS,
                     "song_able": contextSA
                 }
                 context.append(diction)
-
                 # self.fc.findDocument("playlistdetail")
                 t.sleep(3)
             self.f.writeJsonToDataBase(
