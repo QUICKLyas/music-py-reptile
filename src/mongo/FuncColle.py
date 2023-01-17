@@ -34,7 +34,9 @@ class Colle (object):
 
     # 查找数据，设定一些限制保证数据的可用性
     def findDocument(self, collection_name, query={}, projection={}, limit=1, page=0):
+        print(collection_name, limit, page)
         cols = self.condb[collection_name]
+        print(cols)
         docs = cols.find(query, projection).limit(limit).skip(page*limit)
         return docs
 

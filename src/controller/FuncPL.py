@@ -33,11 +33,14 @@ class PL(object):
         # 限制为每50一组 通过self.pl.getL()获取
         # 第一步 获取数据
         n = 0
+        print("2")
         while (True):
             docs = self.fc.findDocument(
                 collection_name="playlists",
                 limit=self.pl.getL(),
                 page=n)
+            n += 1
+            print(docs)
             if len(list(docs)) == 0:
                 break
             for i in docs:
