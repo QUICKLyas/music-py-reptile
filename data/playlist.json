@@ -1,0 +1,151 @@
+{
+    "songs": [
+        {
+            "name": "多远都要在一起",
+            "id": 30612793,
+            "pst": 0,
+            "t": 0,
+            "ar": [
+                {
+                    "id": 7763,
+                    "name": "G.E.M.邓紫棋",
+                    "tns": [],
+                    "alias": []
+                }
+            ],
+            "alia": [
+                "Long Distance"
+            ],
+            "pop": 100,
+            "st": 0,
+            "rt": null,
+            "fee": 1,
+            "v": 64,
+            "crbt": null,
+            "cf": "",
+            "al": {
+                "id": 3189002,
+                "name": "新的心跳",
+                "picUrl": "https://p2.music.126.net/kVwk6b8Qdya8oDyGDcyAVA==/1364493930777368.jpg",
+                "tns": [],
+                "pic": 1364493930777368
+            },
+            "dt": 216880,
+            "h": {
+                "br": 320000,
+                "fid": 0,
+                "size": 8677921,
+                "vd": -40544,
+                "sr": 44100
+            },
+            "m": {
+                "br": 192000,
+                "fid": 0,
+                "size": 5206770,
+                "vd": -37950,
+                "sr": 44100
+            },
+            "l": {
+                "br": 128000,
+                "fid": 0,
+                "size": 3471195,
+                "vd": -36289,
+                "sr": 44100
+            },
+            "sq": {
+                "br": 886486,
+                "fid": 0,
+                "size": 24032654,
+                "vd": -40533,
+                "sr": 44100
+            },
+            "hr": null,
+            "a": null,
+            "cd": "1",
+            "no": 1,
+            "rtUrl": null,
+            "ftype": 0,
+            "rtUrls": [],
+            "djId": 0,
+            "copyright": 2,
+            "s_id": 0,
+            "mark": 8192,
+            "originCoverType": 1,
+            "originSongSimpleData": null,
+            "tagPicList": null,
+            "resourceState": true,
+            "version": 64,
+            "songJumpInfo": null,
+            "entertainmentTags": null,
+            "awardTags": null,
+            "single": 0,
+            "noCopyrightRcmd": null,
+            "rtype": 0,
+            "rurl": null,
+            "mst": 9,
+            "cp": 1415926,
+            "mv": 384709,
+            "publishTime": 1446739200000
+        }
+    ],
+    "privileges": [
+        {
+            "id": 30612793,
+            "fee": 1,
+            "payed": 0,
+            "st": 0,
+            "pl": 0,
+            "dl": 0,
+            "sp": 0,
+            "cp": 0,
+            "subp": 0,
+            "cs": false,
+            "maxbr": 999000,
+            "fl": 0,
+            "toast": false,
+            "flag": 4,
+            "preSell": false,
+            "playMaxbr": 999000,
+            "downloadMaxbr": 999000,
+            "maxBrLevel": "lossless",
+            "playMaxBrLevel": "lossless",
+            "downloadMaxBrLevel": "lossless",
+            "plLevel": "none",
+            "dlLevel": "none",
+            "flLevel": "none",
+            "rscl": null,
+            "freeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "listenType": null
+            },
+            "chargeInfoList": [
+                {
+                    "rate": 128000,
+                    "chargeUrl": null,
+                    "chargeMessage": null,
+                    "chargeType": 1
+                },
+                {
+                    "rate": 192000,
+                    "chargeUrl": null,
+                    "chargeMessage": null,
+                    "chargeType": 1
+                },
+                {
+                    "rate": 320000,
+                    "chargeUrl": null,
+                    "chargeMessage": null,
+                    "chargeType": 1
+                },
+                {
+                    "rate": 999000,
+                    "chargeUrl": null,
+                    "chargeMessage": null,
+                    "chargeType": 1
+                }
+            ]
+        }
+    ],
+    "code": 200
+}
