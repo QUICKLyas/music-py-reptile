@@ -1,7 +1,7 @@
 import mongo.Connect as connect
 
 
-class CreateColle (object):
+class Colle (object):
     def __init__(self) -> None:
         self.con = connect.Conn()
         self.condb = self.con.getDB()
@@ -21,5 +21,15 @@ class CreateColle (object):
             print(collection_name + "exists!")
         cols = self.condb[collection_name]
         cols.insert_one({"name": "playlist"})
-        cols.delete_many({"name": "playlist"})
+        cols.delete_one({"name": "playlist"})
+        return
+
+    def insertDocument(self, doc, collection_name):
+        # 确保该collection是存在的
+        self.createCollection(collection_name)
+        cols = self.condb[collection_name]
+        for i in doc:
+            # 将数据存入
+            cols.insert_one(i)
+            break
         return

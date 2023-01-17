@@ -2,12 +2,14 @@ import json
 import time as t
 from urllib import request
 
+import mongo.FuncColle as funccol
 import myutils.c_code as cc
 import myutils.t_file as tf
 
 
 class GetJson(object):
     def __init__(self) -> None:
+        self.colF = funccol.Colle()
         pass
 
     def getJsonFromUrl(self, ob, name):
@@ -22,5 +24,5 @@ class GetJson(object):
         context = json.loads(context)
         return context
 
-    def writeJson(self, context, file_name):
-        tf.writeJson(context, file_name=file_name)
+    def writeJsonToDataBase(self, context, col_name):
+        self.colF.insertDocument(context, col_name)

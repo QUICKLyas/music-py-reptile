@@ -2,7 +2,10 @@
 
 #### Description
 存储前期的py Reptile Code 和 设计思路
-
++ 数据库中表名
+1. playlist
+2. song
+3. playlistdetail
 #### Software Architecture
 Software architecture description
 
@@ -10,7 +13,7 @@ Software architecture description
 
 1.  实验安装，mongoDB，并在服务器上完成搭建
 2.  使用可视化工具mongoDBCompass连接远程数据库
-3.  xxxx
+3.  
 
 #### Instructions
 

@@ -10,7 +10,7 @@ class PlayList(object):
     def __init__(self, offset=curls.urls['playlist']['offset']):
         self.offset = offset
         self.url = curls.urls['playlist']['head'] + \
-            str(offset) + \
+            str(self.offset) + \
             curls.urls['playlist']["limit"]
         self.head = {
             'User-Agent': cua.ua
@@ -19,11 +19,26 @@ class PlayList(object):
     def getOffset(self):
         return self.offset
 
+    def setOffset(self, offset):
+        self.offset = offset
+        self.setUrl("")
+
     def getUrl(self):
         return self.url
 
+    def setUrl(self, url):
+        if(url == ""):
+            self.url = curls.urls['playlist']['head'] + \
+                str(self.offset) + \
+                curls.urls['playlist']["limit"]
+        else:
+            self.url = url
+
     def getHead(self):
         return self.head
+
+    def setHead(self, head):
+        self.iheadd = head
 
 
 class PlayListDetail(object):
