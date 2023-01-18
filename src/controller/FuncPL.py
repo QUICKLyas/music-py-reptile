@@ -19,7 +19,8 @@ class PL(object):
 
     # 写 playlists
     def writePLtoMongo(self):
-        for n in range(50):
+        for n in range(30):
+            print("playlists ：" + n)
             # 获取内容
             # print(pp.getUrl())
             # print(n, pp.getOffset(), pp.getL())
@@ -43,11 +44,12 @@ class PL(object):
                 limit=self.pl.getL(),
                 page=n)
             n += 1
-            print(len(list(docs)))
+            # print(len(list(docs)))
             if len(list(docs)) == 0:
                 break
             # 将每个playlistdetail存放到playlistdetail
             for i in docs:
+                print()
                 # 根据id 获取playlistdetail数据
                 self.pld.setId(i['id'])
                 # print(self.pld.getUrl())
@@ -97,7 +99,7 @@ class PL(object):
                 }
                 context.append(diction)
                 # self.fc.findDocument("playlistdetail")
-                t.sleep(3)
+                t.sleep(1)
             self.f.writeJsonToDataBase(
                 context=context, col_name="song")
         return "song"

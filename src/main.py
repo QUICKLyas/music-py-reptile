@@ -12,5 +12,8 @@ import service.Parse as parse
 # 同时应该存储每首歌的歌曲是否可以听取的信息
 # 新建对象
 fcPL = fcpl.PL()
+fcPL.writePLtoMongo()
 # fcPL.writePLtoMongo()
 fcPL.writePLDtoMongo()
+# fcPL.writePLtoMongo()
+fcPL.writeSongtoMongo()

@@ -76,9 +76,9 @@ vim /lib/systemd/system/mongodb.service
     After=network.target remote-fs.target nss-lookup.target
 [Service]
     Type=forking
-    ExecStart=/home/mongodb/mongodb/bin/mongod -f /home/mongodb/mongodb/mongodb.conf
+    ExecStart=/home/zz/mongo/bin/mongod -f /home/zz/mongo/mongodb.conf
     ExecReload=/bin/kill -s HUP $MAINPID
-    ExecStop=/home/mongodb/mongodb/bin/mongod -f /home/mongodb/mongodb/mongodb.conf --shutdown
+    ExecStop=/home/zz/mongo/bin/mongod -f /home/zz/mongo/mongodb.conf --shutdown
     PrivateTmp=true
 [Install]
     WantedBy=multi-user.target
