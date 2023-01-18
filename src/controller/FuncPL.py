@@ -20,7 +20,7 @@ class PL(object):
     # 写 playlists
     def writePLtoMongo(self):
         for n in range(30):
-            print("playlists ：" + n)
+            print("playlists ：", n)
             # 获取内容
             # print(pp.getUrl())
             # print(n, pp.getOffset(), pp.getL())
@@ -49,7 +49,7 @@ class PL(object):
                 break
             # 将每个playlistdetail存放到playlistdetail
             for i in docs:
-                print()
+                print("pld:", n, "length:", len(list(docs)))
                 # 根据id 获取playlistdetail数据
                 self.pld.setId(i['id'])
                 # print(self.pld.getUrl())
@@ -74,6 +74,7 @@ class PL(object):
             n += 1
             songIds = []
             for i in docs:
+                print("pld:", n, "length:", len(list(docs)))
                 # print(type(i), i['trackIds'])
                 songIds.extend(i['trackIds'])
             # songIds = list(docs['trackIds'])
