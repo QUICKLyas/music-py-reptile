@@ -19,6 +19,8 @@ class PL(object):
 
     # 写 playlists
     def writePLtoMongo(self):
+        print("[" + t.asctime(t.localtime()) + "]" +
+              "Start get " + "playlist")
         for n in range(30):
             print("playlists ：", n)
             # 获取内容
@@ -37,6 +39,8 @@ class PL(object):
         # 按量获取playlist 的 id
         # 限制为每50一组 通过self.pl.getL()获取
         # 第一步 获取数据
+        print("[" + t.asctime(t.localtime()) + "]" +
+              "Start get " + "playlistdetail")
         n = 0
         while (True):
             docs = self.fc.findDocument(
@@ -64,6 +68,8 @@ class PL(object):
 
     # 写 song
     def writeSongtoMongo(self):
+        print("[" + t.asctime(t.localtime()) + "]" +
+              "Start get " + "song and songdetail")
         # 首先获取trackIds
         n = 0
         while (True):

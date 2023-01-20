@@ -2,7 +2,7 @@
 Author: QUICKLyas 2298930148@qq.com
 Date: 2023-01-18 19:44:58
 LastEditors: QUICKLyas 2298930148@qq.com
-LastEditTime: 2023-01-18 19:44:59
+LastEditTime: 2023-01-20 09:03:45
 FilePath: /reptile/src/mongo/FuncColle.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -13,7 +13,7 @@ class Colle (object):
     def __init__(self) -> None:
         self.con = connect.Conn()
         self.condb = self.con.getDB()
-        self.collist = self.condb. list_collection_names(session=None)
+        self.collist = self.condb.list_collection_names()
         pass
 
     # 创建collection

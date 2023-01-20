@@ -18,9 +18,9 @@ mkdir data data/db data/log
 # 设置读写权限
 sudo chmod 666 data/db data/log
 # 数据库数据存放目录
-dbpath=/usr/local/mongodb/data/db
+dbpath=/root/mongo/data/db
 # 日志文件存放目录
-logpath=/usr/local/mongodb/data/log/mongodb.log
+logpath=/root/mongo/data/log/mongodb.log
 # 日志追加方式
 logappend=true
 # 端口
@@ -31,12 +31,18 @@ auth=true
 fork=true
 # 远程连接要指定ip，否则无法连接；0.0.0.0代表不限制ip访问
 bind_ip=0.0.0.0
+#最大同时连接数
+maxConns = 5
+#每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。
+journal = true
+#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。
+storageEngine = wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks
 
 配置环境
 打开
 sudo vim /etc/profile
 末尾添加内容：
-export MONGODB_HOME=/usr/local/mongodb
+export MONGODB_HOME=/root/mongo
 export PATH=$PATH:$MONGODB_HOME/bin
 重载profile文件
 
@@ -76,9 +82,9 @@ vim /lib/systemd/system/mongodb.service
     After=network.target remote-fs.target nss-lookup.target
 [Service]
     Type=forking
-    ExecStart=/home/zz/mongo/bin/mongod -f /home/zz/mongo/mongodb.conf
+    ExecStart=/root/mongo/bin/mongod -f /root/mongo/mongodb.conf
     ExecReload=/bin/kill -s HUP $MAINPID
-    ExecStop=/home/zz/mongo/bin/mongod -f /home/zz/mongo/mongodb.conf --shutdown
+    ExecStop=/root/mongo/bin/mongod -f /root/mongo/mongodb.conf --shutdown
     PrivateTmp=true
 [Install]
     WantedBy=multi-user.target

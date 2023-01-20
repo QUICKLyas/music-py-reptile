@@ -1,0 +1,63 @@
+nohup: ignoring input
+Unable to find local data/json file or could not parse the contents using importlib-resources. Try pkg-resource next.
+Traceback (most recent call last):
+  File "fake_useragent/utils.py", line 128, in load
+  File "importlib/_common.py", line 22, in files
+  File "importlib/_common.py", line 66, in get_package
+  File "importlib/_common.py", line 57, in resolve
+  File "importlib/__init__.py", line 126, in import_module
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'fake_useragent.data'
+Could not find local data/json file or could not parse the contents using pkg-resource. Fallback to external resource.
+Traceback (most recent call last):
+  File "fake_useragent/utils.py", line 128, in load
+  File "importlib/_common.py", line 22, in files
+  File "importlib/_common.py", line 66, in get_package
+  File "importlib/_common.py", line 57, in resolve
+  File "importlib/__init__.py", line 126, in import_module
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'fake_useragent.data'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fake_useragent/utils.py", line 142, in load
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/_MEIr2af51/fake_useragent/data/browsers.json'
+Traceback (most recent call last):
+  File "pymongo/pool.py", line 767, in command
+  File "pymongo/network.py", line 156, in command
+  File "pymongo/network.py", line 217, in receive_message
+  File "pymongo/network.py", line 307, in _receive_data_on_socket
+OSError: connection closed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "main.py", line 14, in <module>
+  File "controller/FuncPL.py", line 18, in __init__
+  File "service/Parse.py", line 12, in __init__
+  File "controller/FuncGetJson.py", line 21, in __init__
+  File "mongo/FuncColle.py", line 16, in __init__
+  File "pymongo/database.py", line 959, in list_collection_names
+  File "pymongo/database.py", line 911, in list_collections
+  File "pymongo/_csot.py", line 105, in csot_wrapper
+  File "pymongo/mongo_client.py", line 1442, in _retryable_read
+  File "contextlib.py", line 135, in __enter__
+  File "pymongo/mongo_client.py", line 1282, in _socket_from_server
+  File "contextlib.py", line 135, in __enter__
+  File "pymongo/mongo_client.py", line 1217, in _get_socket
+  File "contextlib.py", line 135, in __enter__
+  File "pymongo/pool.py", line 1407, in get_socket
+  File "pymongo/pool.py", line 1520, in _get_socket
+  File "pymongo/pool.py", line 1373, in connect
+  File "pymongo/pool.py", line 622, in hello
+  File "pymongo/pool.py", line 658, in _hello
+  File "pymongo/pool.py", line 795, in command
+  File "pymongo/pool.py", line 953, in _raise_connection_failure
+  File "pymongo/pool.py", line 262, in _raise_connection_failure
+pymongo.errors.AutoReconnect: 139.224.66.83:27017: connection closed
+[184] Failed to execute script 'main' due to unhandled exception!
