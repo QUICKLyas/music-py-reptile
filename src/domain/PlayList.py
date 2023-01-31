@@ -7,23 +7,23 @@ import myutils.c_urls as curls
 
 class PlayList(object):
 
-    def __init__(self, offset=curls.urls['playlist']['offset']):
-        self.offset = offset
+    def __init__(self, before=curls.urls['playlist']['before']):
+        self.before = before
+        self.limit = 100
         self.url = curls.urls['playlist']['head'] + \
-            str(self.offset)
+            str(self.before)
         self.head = {
             'User-Agent': cua.ua
         }
-        self.limit = curls.urls['playlist']["limit"]
 
     def getL(self):
         return self.limit
 
-    def getOffset(self):
-        return self.offset
+    def getBefore(self):
+        return self.before
 
-    def setOffset(self, offset):
-        self.offset = offset
+    def setBefore(self, before):
+        self.before = before
         self.setUrl("")
 
     def getUrl(self):
@@ -32,7 +32,7 @@ class PlayList(object):
     def setUrl(self, url):
         if(url == ""):
             self.url = curls.urls['playlist']['head'] + \
-                str(self.offset)
+                str(self.before)
         else:
             self.url = url
 
@@ -44,14 +44,15 @@ class PlayList(object):
 
 
 class PlayListDetail(object):
-    def __init__(self, id=curls.urls['playlist_detail']['id'], timestamp=math.trunc(t.time())) -> None:
+    # timestamp=math.trunc(t.time())
+    def __init__(self, id=curls.urls['playlist_detail']['id'], s=0) -> None:
         # math.trunc(t.time())
         self.id = id
-        self.timestamp = curls.urls['playlist_detail']["timestamp"] + \
-            str(timestamp)
+        # 最近收藏这个id的用户
+        self.s = curls.urls['playlist_detail']['s']+str(s)
         self.url = curls.urls['playlist_detail']['head'] + \
             str(self.id) + \
-            self.timestamp
+            self.s
         self.head = {
             'User-Agent': cua.ua
         }
@@ -63,11 +64,11 @@ class PlayListDetail(object):
         self.id = id
         self.setUrl("")
 
-    def getTimestamp(self):
-        return self.timestamp
+    def getS(self):
+        return self.s
 
-    def setTimestamp(self, timestamp):
-        self.timestamp = timestamp
+    def setS(self, s):
+        self.s = s
 
     def getUrl(self):
         return self.url
@@ -76,7 +77,7 @@ class PlayListDetail(object):
         if(url == ""):
             self.url = curls.urls['playlist_detail']['head'] + \
                 str(self.id) + \
-                self.timestamp
+                self.s
         else:
             self.url = url
 

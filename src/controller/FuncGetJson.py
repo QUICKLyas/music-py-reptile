@@ -34,5 +34,5 @@ class GetJson(object):
         context = json.loads(context)
         return context
 
-    def writeJsonToDataBase(self, context, col_name):
-        self.colF.insertDocument(context, col_name)
+    def writeJsonToDataBase(self, limit, context, col_name):
+        return self.colF.insertDocument(limit, context, col_name)

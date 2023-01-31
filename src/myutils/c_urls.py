@@ -1,21 +1,24 @@
 urls = {
     "playlist": {
         # https://yesplaymusic.yunyuwu.cn/api/top/playlist?cat=%E5%85%A8%E9%83%A8&offset=50
-        "head": "https://yesplaymusic.yunyuwu.cn/api/top/playlist?cat=%E5%85%A8%E9%83%A8&offset=",
-        "offset": 0,  # start num
-        "limit": 50,
+        "head": "http://localhost:3000/top/playlist/highquality?limit=100&before=",
+        "before": 0  # start num
     },
     "playlist_detail": {
-        "head": "https://yesplaymusic.yunyuwu.cn/api/playlist/detail?id=",
+        "head": "http://localhost:3000/playlist/detail?id=",
         "id": "",
-        "timestamp": "&timestamp="
+        "s": "&s="
     },
     "song_detail": {
-        "head": "https://yesplaymusic.yunyuwu.cn/api/song/detail?ids=",
-        "ids": ""
+        "head": "http://localhost:3000/song/detail?ids=",
+        "id": ""
+    },
+    "song_url": {
+        "head": "http://localhost:3000/song/url?id=",
+        "id": ""
     },
     "song_listen_able": {
-        "head": "https://yesplaymusic.yunyuwu.cn/api/song/url?id=",
+        "head": "http://localhost:3000/check/music?id=",
         "id": ""
     },
     # 每首歌曲中每段歌词出现的时间，用在滚动歌词界面

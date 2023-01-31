@@ -28,20 +28,30 @@ class Colle (object):
         return
 
     # 插入数据，一次一条
-    def insertDocument(self, doc, collection_name):
+    def insertDocument(self, last, docs, collection_name):
         # 确保该collection是存在的
         self.createCollection(collection_name)
         cols = self.condb[collection_name]
         # 将每段数据存储到数据库中
         # print(cols.estimated_document_count())
-        for i in doc:
+        n = 0
+        for i in docs:
             # print(i['id'],i['name'])
             # 将数据存入
+
             if self.isDocExtists(i, collection_name) != True:
                 cols.insert_one(i)
-        return
+                print(n, " : ", i['name'])
+                n += 1
 
+        print("The number of object is ", n)
+        if (collection_name == "playlists"):
+            updateTime = docs[last]['updateTime']
+            return updateTime
+        else:
+            return
     # 查找数据，设定一些限制保证数据的可用性
+
     def findDocument(self, collection_name, query={}, projection={}, limit=1, page=0):
         # print(limit, page)
         cols = self.condb[collection_name]
