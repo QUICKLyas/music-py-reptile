@@ -42,6 +42,7 @@ class Colle (object):
             if self.isDocExtists(i, collection_name) != True:
                 cols.insert_one(i)
                 print(n, " : ", i['name'])
+                print()
                 n += 1
 
         print("The number of object is ", n)

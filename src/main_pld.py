@@ -22,5 +22,5 @@ import service.Parse as parse
 fcPL = fcpl.PL()
 # fcPL.writePLtoMongo()
 fcPL.writePLDtoMongo()
-# fcPL.writeSongtoMongo()
-# fcPL.writeSongDetailtoMongo()
+fcPL.writeSongtoMongo()
+fcPL.writeSongDetailtoMongo()
