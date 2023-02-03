@@ -89,10 +89,17 @@ class PL(object):
         # 首先获取trackIds
         n = 0
         while (True):
+            tags = []
             docs = self.fc.findDocument(
                 collection_name="playlistdetail",
                 limit=1,
-                page=n)[0]['trackIds']
+                page=n)
+
+            if(len(docs[0]['trackIds']) < 1):
+                break
+            else:
+                tags = docs[0]['tags']
+                docs = docs[0]['trackIds']
             print("pld_docs_page:", n, " pld_docs_length:", len(docs))
 
             n += 1
@@ -115,7 +122,8 @@ class PL(object):
                     "id": i['id'],
                     "name": i['id'],
                     "song_url": contextS,
-                    "song_able": contextSA
+                    "song_able": contextSA,
+                    "tags": tags
                 }
                 context.append(diction)
                 # self.fc.findDocument("playlistdetail")
@@ -146,7 +154,7 @@ class PL(object):
                 # print(contextSD)
                 diction = {
                     "id": i['id'],
-                    "name": contextSD['name'],
+                    "name": contextSD['al']['name'],
                     "song": contextSD
                 }
                 context.append(diction)

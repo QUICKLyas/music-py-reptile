@@ -21,6 +21,6 @@ import service.Parse as parse
 # 新建对象
 fcPL = fcpl.PL()
 # fcPL.writePLtoMongo()
-fcPL.writePLDtoMongo()
-# fcPL.writeSongtoMongo()
-# fcPL.writeSongDetailtoMongo()
+# fcPL.writePLDtoMongo()
+fcPL.writeSongDetailtoMongo()
+fcPL.writeSongtoMongo()

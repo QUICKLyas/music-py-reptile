@@ -42,10 +42,14 @@ class Colle (object):
             if self.isDocExtists(i, collection_name) != True:
                 cols.insert_one(i)
                 print(n, " : ", i['name'])
-                print()
                 n += 1
+            elif self.isDocExtists(i, collection_name) == True and collection_name == "song" or collection_name == "songdetail":
+                myquery = {"id": i['id']}
+                newvalues = {"$set": {"tags": i['tags']}}
+                cols.update_one(myquery, newvalues)
+                print(n, " : ", i['name'])
 
-        print("The number of object is ", n)
+        print("The number of object that have been added is ", n)
         if (collection_name == "playlists"):
             updateTime = docs[last]['updateTime']
             return updateTime
