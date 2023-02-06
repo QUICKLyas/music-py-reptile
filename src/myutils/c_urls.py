@@ -33,6 +33,12 @@ urls = {
     "artist": {
         "head": "https://yesplaymusic.yunyuwu.cn/api/simi/artist?id=",
         "id": ""
+    },
+
+    # 类别
+    "tags": {
+        "head": "http://localhost:3000/playlist/catlist",
+        "id": ""
     }
 }
 # 歌单 -- 歌曲 -- 歌手

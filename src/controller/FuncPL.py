@@ -12,11 +12,12 @@ class PL(object):
         self.pl = pl.PlayList()
         self.pld = pl.PlayListDetail()
         self.s = s.Song()
+        self.sd = s.SongDetail()
         self.sa = s.SongAble()
+
         self.f = fgJ.GetJson()
         self.fc = funccol.Colle()
         self.p = parse.Parse()
-        self.sd = s.SongDetail()
 
     # 写 playlists
     def writePLtoMongo(self):
@@ -29,7 +30,6 @@ class PL(object):
             # 获取内容
             # print(pp.getUrl())
             # print(n, pp.getOffset(), pp.getL())
-
             context = self.f.getJsonFromUrl(self.pl, "playlists")
 
             if len(list(context['playlists'])) == 0 or n > 100:

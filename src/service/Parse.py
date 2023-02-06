@@ -23,6 +23,54 @@ class Parse(object):
     #   },
     #   ...
     # ]
+    # code all sub categories
+    def readTagsCategories(self, context):
+        categories = context['categories']
+        list = []
+        # 抽出类别
+        for item in categories:
+            list.append(categories[item])
+        return list
+
+    def readTagsSub(self, context):
+        subs = context['sub']
+        diction = {
+            "list": [],
+            "0": [],
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
+        }
+        # 抽出具体分类
+        for item in subs:
+            diction['list'].append(item['name'])
+            # print(item['category'])
+            if item['category'] == 0:
+                diction['0'].append(item['name'])
+            elif item['category'] == 1:
+                diction['1'].append(item['name'])
+            elif item['category'] == 2:
+                diction['2'].append(item['name'])
+            elif item['category'] == 3:
+                diction['3'].append(item['name'])
+            else:
+                diction['4'].append(item['name'])
+        # print(diction)
+        return diction
+
+    def readTagsSubtoListId(self, context):
+        list = []
+        subs = context['sub']
+        # print(len(subs))
+        n = 0
+        for item in subs:
+            item['id'] = n
+            # print(item)
+            n += 1
+            list.append(item)
+        return list
+
     def readPlayList(self):
         context = tf.readJson(file_name="pl")
         cList = context['playlists']
