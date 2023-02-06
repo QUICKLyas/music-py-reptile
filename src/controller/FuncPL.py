@@ -142,24 +142,28 @@ class PL(object):
                 collection_name="song",
                 limit=self.pl.getL(),
                 page=n)
+            # 翻页
+            print("page: ", n)
+            n += 1
             if len(list(docs)) == 0:
                 break
             num = 1
-            context = []
             for i in docs:
-                print(num, "song_id:", i['id'])
+                context = []
                 self.sd.setId(i['id'])
                 contextSD = self.f.getJsonFromUrl(
                     self.sd, "songdetail")['songs'][0]
-                # print(contextSD)
+                # print(i.tags)
+                # tags = i['tags']
                 diction = {
                     "id": i['id'],
                     "name": contextSD['al']['name'],
-                    "song": contextSD
+                    "song": contextSD,
                 }
+                # print(diction)
                 context.append(diction)
                 num += 1
                 t.sleep(2)
-            self.f.writeJsonToDataBase(
-                0, context=context, col_name="songdetail")
+                self.f.writeJsonToDataBase(
+                    0, context=context, col_name="songdetail")
         return "song detail"

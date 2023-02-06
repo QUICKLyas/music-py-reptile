@@ -38,18 +38,21 @@ class Colle (object):
         for i in docs:
             # print(i['id'],i['name'])
             # 将数据存入
-
+            # 判断是否存在该数据，不存在，将数据插入
             if self.isDocExtists(i, collection_name) != True:
                 cols.insert_one(i)
-                print(n, " : ", i['name'])
+                print("new: ", n, " : ", i['name'])
                 n += 1
-            elif self.isDocExtists(i, collection_name) == True and collection_name == "song" or collection_name == "songdetail":
+            # 当处理的是song表时，判断存在该数据，如果存在，那么就要做更新
+            if collection_name == "song" and self.isDocExtists(i, collection_name) == True:
+                n += 1
                 myquery = {"id": i['id']}
                 newvalues = {"$set": {"tags": i['tags']}}
                 cols.update_one(myquery, newvalues)
-                print(n, " : ", i['name'])
-
-        print("The number of object that have been added is ", n)
+                print("update:", n, " : ", i['name'])
+        # 输出信息显示当前写入数据库的数据个数
+        # print("The number of object that have been wrote is ", n)
+        # 假设我们处理的playlists，就返回playlists的最后一个单元的updateTime
         if (collection_name == "playlists"):
             updateTime = docs[last]['updateTime']
             return updateTime
@@ -76,7 +79,7 @@ class Colle (object):
         self.col = self.condb[collection_name]
         docs = self.col.find({'id': doc['id']})
         length = len(list(docs))
-        # print(length)
+        # print(length,doc['id'])
         # for i in docs:
         #     print(i)
         if length != 0:

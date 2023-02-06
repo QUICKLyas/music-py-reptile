@@ -1,11 +1,3 @@
-'''
-Author: QUICKLyas 2298930148@qq.com
-Date: 2023-01-20 08:52:25
-LastEditors: QUICKLyas 2298930148@qq.com
-LastEditTime: 2023-01-20 16:14:51
-FilePath: /reptile/src/main.py
-# Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
-'''
 import time as t
 
 import controller.FuncGetJson as fgJ
