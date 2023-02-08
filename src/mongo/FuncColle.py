@@ -50,12 +50,20 @@ class Colle (object):
             return updateTime
         else:
             return
-    # 查找数据，设定一些限制保证数据的可用性
 
+    # 查找数据，设定一些限制
     def findDocument(self, collection_name, query={}, projection={}, limit=1, page=0):
         # print(limit, page)
         cols = self.condb[collection_name]
         docs = cols.find(query, projection).limit(limit).skip(page*limit)
+        return list(docs)
+
+    # 随机查找数据，设定一些限制
+    # collection_names 是一个列表，可以为一个也可以多个，但是第0个必须是主表
+    def aggregateDocument(self, collection_name, querys=[]):
+
+        cols = self.condb[collection_name]
+        docs = cols.aggregate(querys)
         return list(docs)
 
     # 删除数据
@@ -69,11 +77,12 @@ class Colle (object):
     # 不存在返回false
     def isDocExtists(self, doc, collection_name):
         self.col = self.condb[collection_name]
-        docs = self.col.find({'id': doc['id']})
+        docs = None
+        if (collection_name == "user"):
+            docs = self.col.find({'name': doc['name']})
+        else:
+            docs = self.col.find({'id': doc['id']})
         length = len(list(docs))
-        # print(length,doc['id'])
-        # for i in docs:
-        #     print(i)
         if length != 0:
             return True
         else:

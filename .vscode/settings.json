@@ -5,6 +5,9 @@
     "./src",
     "./src",
     "./src",
+    "./src",
+    "./src/test",
+    "./src",
     "./src"
   ],
   "isort.trace": "off"
