@@ -7,6 +7,7 @@ FilePath: /reptile/src/controller/FuncGetJson.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
 import json
+import requests
 import ssl as s
 import time as t
 from urllib import request
@@ -33,6 +34,15 @@ class GetJson(object):
         context = res.read().decode(cc.code['utf-8'])
         context = json.loads(context)
         return context
+
+    def getCookieFromUrl(self, ob, name):
+        req = request.Request(
+            url=ob.url,
+            headers=ob.head
+        )
+        session = requests.session()
+        cookies = session.get(ob.url).cookies.get_dict()
+        print(cookies)
 
     def writeJsonToDataBase(self, limit, context, col_name):
         return self.colF.insertDocument(limit, context, col_name)

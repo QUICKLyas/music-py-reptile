@@ -1,9 +1,4 @@
 {
-    "python.analysis.extraPaths": [
-        "./src",
-        "./src",
-        "./src",
-        "./src"
-    ],
-    "isort.trace": "off"
+  "python.analysis.extraPaths": ["./src", "./src", "./src", "./src", "./src"],
+  "isort.trace": "off"
 }

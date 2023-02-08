@@ -4,6 +4,7 @@ import time as t
 import controller.FuncGetJson as fgJ
 import controller.FuncPL as fcpl
 import controller.FuncTags as fctgs
+import controller.FuncUser as fcUser
 import domain.PlayList as pl
 import mongo.FuncColle as funccol
 import service.Parse as parse
@@ -15,7 +16,9 @@ import service.Parse as parse
 # 新建对象
 fcPL = fcpl.PL()
 fcTgs = fctgs.Tags()
-fcTgs.writeTagstoMongo()
+fcUer = fcUser.Users()
+fcUer.writeUsertoMongo()
+# fcTgs.writeTagstoMongo()
 # 处理歌单和歌曲
 # fcPL.writePLtoMongo()
 # fcPL.writePLDtoMongo()
