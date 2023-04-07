@@ -1,4 +1,10 @@
 #!/usr/bin/python3
-import test.tset1 as test
+# import time as t
+import set.UserSetCreate as setc
+import set.UserLikeSetCreate as setul
 
-test
+sc = setc.UserSetCreate()
+# sc.makeUserSet()
+sul = setul.UserLikeSetCreate()
+sul.makeUserLikeSet()
+# sc.makeUserSet()
