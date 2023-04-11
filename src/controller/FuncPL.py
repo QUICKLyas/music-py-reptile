@@ -121,8 +121,8 @@ class PL(object):
                 diction = {
                     "id": i['id'],
                     "name": i['id'],
-                    "song_url": contextS,
-                    "song_able": contextSA,
+                    "songUrl": contextS,
+                    "songAble": contextSA,
                     "tags": tags
                 }
                 context.append(diction)
